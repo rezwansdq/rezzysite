@@ -1,0 +1,182 @@
+body {
+    background-color: #141414;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.profiles-container h1 {
+    font-size: 3.5vw; /* Responsive font size */
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.profiles-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2vw; /* Responsive gap */
+    margin-bottom: 50px;
+}
+
+.profile-card {
+    cursor: pointer;
+    width: 10vw; /* Responsive width */
+    max-width: 150px; /* Max card size */
+    min-width: 80px; /* Min card size */
+}
+
+.profile-card img {
+    width: 100%;
+    border-radius: 4px;
+    border: 2px solid transparent; /* For hover effect */
+    transition: transform 0.1s ease-out, border-color 0.1s ease-out;
+}
+
+.profile-card span {
+    display: block;
+    margin-top: 0.5em;
+    color: grey;
+    font-size: 1.3vw; /* Responsive font size */
+    transition: color 0.1s ease-out;
+}
+
+.profile-card:hover img {
+    border-color: #fff;
+    transform: scale(1.05);
+}
+
+.profile-card:hover span {
+    color: #fff;
+}
+
+.manage-profiles-btn {
+    background-color: transparent;
+    border: 1px solid grey;
+    color: grey;
+    padding: 0.7em 1.5em;
+    font-size: 1.2vw; /* Responsive font size */
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.manage-profiles-btn:hover {
+    background-color: #fff;
+    color: #141414;
+    border-color: #fff;
+}
+
+/* Styles for the profile content page (initially hidden) */
+.profile-content-container {
+    width: 100%;
+    padding: 20px;
+    display: flex; /* Will be flex later for actual content */
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-content-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.content-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    justify-content: center;
+    gap: 20px;
+}
+
+.content-card {
+    background-color: #222;
+    border-radius: 4px;
+    width: 200px; /* Fixed width for now, can be responsive */
+    height: 120px; /* Fixed height for now */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    text-align: center;
+    padding: 15px;
+}
+
+.content-card:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    background-color: #333;
+}
+
+.content-card .icon {
+    font-size: 2rem; /* Placeholder for icons */
+    margin-bottom: 10px;
+}
+
+.content-card span {
+    font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profiles-container h1 {
+        font-size: 5vw;
+    }
+    .profiles-grid {
+        flex-wrap: wrap; /* Allow profile cards to wrap */
+        gap: 3vw;
+    }
+    .profile-card {
+        width: 20vw;
+    }
+    .profile-card span {
+        font-size: 2vw;
+    }
+    .manage-profiles-btn {
+        font-size: 2vw;
+        padding: 0.6em 1.2em;
+    }
+    .content-card {
+        width: 150px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profiles-container h1 {
+        font-size: 7vw;
+        margin-bottom: 15px;
+    }
+    .profiles-grid {
+        gap: 4vw;
+    }
+    .profile-card {
+        width: 30vw; /* Make cards larger percentage-wise */
+    }
+    .profile-card span {
+        font-size: 3vw;
+    }
+    .manage-profiles-btn {
+        font-size: 2.8vw;
+        padding: 0.5em 1em;
+    }
+    .content-grid {
+        flex-direction: column; /* Stack cards vertically on very small screens */
+        align-items: center;
+    }
+    .content-card {
+        width: 80%; /* Make content cards take more width */
+        max-width: 250px;
+        height: auto; /* Adjust height automatically */
+        padding: 20px;
+    }
+    .profile-content-container h2 {
+        font-size: 2rem;
+    }
+} 
