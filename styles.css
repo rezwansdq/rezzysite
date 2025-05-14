@@ -1,46 +1,117 @@
 body {
-    background-color: #141414;
-    color: #fff;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin: 0;
-    /* display: flex; justify-content: center; align-items: center; min-height: 100vh; */ /* Re-evaluate if needed for direct content page */
-    text-align: center;
+    /* background-color: #141414; */ /* Handled by Tailwind: bg-black */
+    /* color: #fff; */ /* Handled by Tailwind: text-white */
+    font-family: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added Gotham as primary font */
+    margin: 0; /* Reset margin */
+    /* display: flex; */ /* Handled by Tailwind on .profiles-container */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* min-height: 100vh; */
+    /* text-align: center; */ /* Often handled by specific Tailwind text utilities */
     overflow-x: hidden; 
+    position: relative; /* Needed for the pseudo-element positioning */
 }
 
-/* Splash screen styles removed */
+body::before {
+    content: '';
+    position: fixed; /* Covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.9) 100%);
+    /* Adjust the percentages (50% here) to control the vignette size and fade */
+    /* For a darker overall feel that starts closer to the center, you might use something like: */
+    /* background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 70%, rgba(0,0,0,0.95) 100%); */
+    z-index: -1; /* Place it behind the content */
+    pointer-events: none; /* Make sure it doesn't interfere with mouse events */
+}
 
+/* .profiles-container specific styles - some are now Tailwind */
+.profiles-container h1 {
+    /* font-size: 3.5vw; */ /* Handled by Tailwind: text-3xl md:text-5xl */
+    font-weight: normal; /* Keep or use Tailwind: font-normal */
+    /* margin-bottom: 20px; */ /* Handled by Tailwind: mb-5 md:mb-10 */
+}
+
+.profiles-grid {
+    /* display: flex; */ /* Handled by Tailwind: flex */
+    /* justify-content: center; */ /* Handled by Tailwind: justify-center */
+    /* gap: 2vw; */ /* Handled by Tailwind: gap-4 md:gap-8 */
+    /* margin-bottom: 50px; */ /* Handled by Tailwind: mb-10 md:mb-12 */
+}
+
+.profile-card {
+    cursor: pointer;
+    width: 10vw; /* Or use Tailwind: w-24 md:w-36 etc. */
+    max-width: 150px;
+    min-width: 80px;
+    text-align: center; /* Ensure text under card is centered if not inheriting */
+}
+
+.profile-card img {
+    width: 100%;
+    /* border-radius: 4px; */ /* Handled by Tailwind: rounded-md */
+    /* border: 2px solid transparent; */ /* Handled by Tailwind: border-2 border-transparent */
+    /* transition: transform 0.1s ease-out, border-color 0.1s ease-out; */ /* Handled by Tailwind: transition-all duration-150 ease-out */
+}
+
+/* .profile-card:hover img is handled by Tailwind hover: utilities */
+
+.profile-card span {
+    display: block;
+    margin-top: 0.5em; /* Or Tailwind: mt-2 */
+    /* color: grey; */ /* Handled by Tailwind: text-gray-400 */
+    font-size: 1.3vw; /* Or Tailwind: text-xs sm:text-sm md:text-base */
+    /* transition: color 0.1s ease-out; */ /* Handled by Tailwind: transition-colors duration-150 */
+}
+
+/* .profile-card:hover span is handled by Tailwind group-hover: utilities */
+
+.manage-profiles-btn {
+    /* background-color: transparent; */ /* Handled by Tailwind: bg-transparent */
+    /* border: 1px solid grey; */ /* Handled by Tailwind: border border-gray-500 */
+    /* color: grey; */ /* Handled by Tailwind: text-gray-500 */
+    /* padding: 0.7em 1.5em; */ /* Handled by Tailwind: py-2 px-6 md:py-3 md:px-8 */
+    /* font-size: 1.2vw; */ /* Handled by Tailwind: text-sm md:text-base */
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Or Tailwind: tracking-wider */
+    /* transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; */ /* Handled by Tailwind: transition-colors duration-200 */
+}
+
+/* .manage-profiles-btn:hover is handled by Tailwind hover: utilities */
+
+
+/* Styles for the profile content page (initially hidden) */
 .profile-content-container {
     width: 100%;
-    padding: 40px 20px;
-    display: flex; 
+    padding: 20px;
+    display: flex; /* Keep for structure, or manage with JS/Tailwind on display */
     flex-direction: column;
     align-items: center;
-    opacity: 1; /* Ensure it's fully visible */
-    /* transition removed */
+    /* Tailwind classes can be added here when this container is shown */
 }
 
-/* .fade-in class removed */
-
 .profile-content-container h2 {
-    font-size: 2.5rem; 
-    margin-bottom: 30px; 
-    color: #fff; 
+    font-size: 2.5rem; /* Keep or use Tailwind: text-4xl */
+    margin-bottom: 30px;
+    color: #fff;
 }
 
 .content-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2vw; /* Using responsive gap like profile selection */
-    padding: 20px; /* Add some padding around the grid */
+    gap: 2vw; 
+    padding: 20px;
 }
 
 .content-card {
-    background-color: #222;
-    border-radius: 4px; /* Existing rounded corners */
-    width: 150px;  /* Making it square */
-    height: 150px; /* Making it square */
+    background-color: #141414; /* Or Tailwind: bg-gray-800 */
+    border-radius: 4px;
+    width: 150px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,48 +119,47 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease-out;
     text-align: center;
-    padding: 15px; /* Existing padding */
-    /* Add a subtle border, similar to profile cards on hover, but always visible or on card itself */
-    border: 2px solid #333; /* Darker border for unhovered state */
+    padding: 15px;
+    border: 2px solid #141414;
 }
 
 .content-card:hover {
     transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Slightly stronger shadow */
-    background-color: #333;
-    border-color: #fff; /* White border on hover, like profile images */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    background-color: #141414;
+    border-color: #fff;
 }
 
 .content-card .icon {
-    font-size: 3rem; /* Slightly larger icon */
+    font-size: 3rem;
     margin-bottom: 10px;
 }
 
 .content-card span {
-    font-size: 1rem; /* Existing */
-    color: #ccc; /* Lighter text color for better contrast on dark card */
+    font-size: 1rem;
+    color: #ccc;
 }
 
 .content-card:hover span {
-    color: #fff; /* White text on hover */
+    color: #fff;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments - Review if Tailwind classes cover these adequately */
 @media (max-width: 768px) {
-    .profile-content-container h2 {
-        font-size: 2rem;
-        margin-bottom: 30px;
+    .profile-card {
+        width: 20vw; /* Review: Tailwind offers responsive width classes like w-1/5 or specific pixel values */
     }
-    .manage-profiles-btn {
-        font-size: 2vw;
-        padding: 0.6em 1.2em;
+    .profile-card span {
+        font-size: 2vw; /* Review: Tailwind text size utilities */
     }
+    /* .manage-profiles-btn is handled by responsive Tailwind classes */
+
     .content-grid {
         gap: 3vw;
     }
     .content-card {
-        width: 120px; /* Adjust square size for tablets */
-        height: 120px; /* Adjust square size for tablets */
+        width: 120px;
+        height: 120px;
     }
     .content-card .icon {
         font-size: 2.5rem;
@@ -97,26 +167,43 @@ body {
 }
 
 @media (max-width: 480px) {
-    .profile-content-container h2 {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
+    .profile-card {
+        width: 30vw; /* Review */
     }
-    .manage-profiles-btn {
-        font-size: 2.8vw;
-        padding: 0.5em 1em;
+    .profile-card span {
+        font-size: 3vw; /* Review */
     }
+    /* .manage-profiles-btn is handled by responsive Tailwind classes */
+
     .content-grid {
         gap: 4vw;
-        flex-direction: row; /* Keep as row and let wrap handle it */
-        /* align-items: center; -- This was for column layout, remove if using row wrap */
     }
     .content-card {
-        width: 100px; /* Adjust square size for mobile */
-        height: 100px; /* Adjust square size for mobile */
-         /* To ensure 2 cards per row on small screens if desired, set max-width */
-        /* max-width: calc(50% - 2vw); */ /* Example: 2vw is half of gap */
+        width: 100px;
+        height: 100px;
     }
     .content-card .icon {
         font-size: 2rem;
     }
+    .profile-content-container h2 {
+        font-size: 2rem; /* Or Tailwind: text-3xl */
+    }
+}
+
+#cursor-shadow {
+    position: fixed;
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    background-color: rgba(0, 0, 0, 0.1); /* Faded black */
+    border-radius: 50%; /* Make it circular */
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.15); /* Soft shadow effect */
+    pointer-events: none; /* So it doesn't interfere with clicks on other elements */
+    z-index: 9999; /* Ensure it's on top (but below custom cursors if any) */
+    transform: translate(-50%, -50%); /* Center the shadow on the cursor position */
+    opacity: 0;
+    transition: opacity 0.2s ease-out; /* Smooth appearance */
+}
+
+.bg-custom {
+    /* Add any custom styles for the bg-custom class here */
 } 
