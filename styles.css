@@ -3,180 +3,120 @@ body {
     color: #fff;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    /* display: flex; justify-content: center; align-items: center; min-height: 100vh; */ /* Re-evaluate if needed for direct content page */
     text-align: center;
+    overflow-x: hidden; 
 }
 
-.profiles-container h1 {
-    font-size: 3.5vw; /* Responsive font size */
-    font-weight: normal;
-    margin-bottom: 20px;
-}
+/* Splash screen styles removed */
 
-.profiles-grid {
-    display: flex;
-    justify-content: center;
-    gap: 2vw; /* Responsive gap */
-    margin-bottom: 50px;
-}
-
-.profile-card {
-    cursor: pointer;
-    width: 10vw; /* Responsive width */
-    max-width: 150px; /* Max card size */
-    min-width: 80px; /* Min card size */
-}
-
-.profile-card img {
-    width: 100%;
-    border-radius: 4px;
-    border: 2px solid transparent; /* For hover effect */
-    transition: transform 0.1s ease-out, border-color 0.1s ease-out;
-}
-
-.profile-card span {
-    display: block;
-    margin-top: 0.5em;
-    color: grey;
-    font-size: 1.3vw; /* Responsive font size */
-    transition: color 0.1s ease-out;
-}
-
-.profile-card:hover img {
-    border-color: #fff;
-    transform: scale(1.05);
-}
-
-.profile-card:hover span {
-    color: #fff;
-}
-
-.manage-profiles-btn {
-    background-color: transparent;
-    border: 1px solid grey;
-    color: grey;
-    padding: 0.7em 1.5em;
-    font-size: 1.2vw; /* Responsive font size */
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.manage-profiles-btn:hover {
-    background-color: #fff;
-    color: #141414;
-    border-color: #fff;
-}
-
-/* Styles for the profile content page (initially hidden) */
 .profile-content-container {
     width: 100%;
-    padding: 20px;
-    display: flex; /* Will be flex later for actual content */
+    padding: 40px 20px;
+    display: flex; 
     flex-direction: column;
     align-items: center;
+    opacity: 1; /* Ensure it's fully visible */
+    /* transition removed */
 }
 
+/* .fade-in class removed */
+
 .profile-content-container h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+    font-size: 2.5rem; 
+    margin-bottom: 30px; 
+    color: #fff; 
 }
 
 .content-grid {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 2vw; /* Using responsive gap like profile selection */
+    padding: 20px; /* Add some padding around the grid */
 }
 
 .content-card {
     background-color: #222;
-    border-radius: 4px;
-    width: 200px; /* Fixed width for now, can be responsive */
-    height: 120px; /* Fixed height for now */
+    border-radius: 4px; /* Existing rounded corners */
+    width: 150px;  /* Making it square */
+    height: 150px; /* Making it square */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease-out;
     text-align: center;
-    padding: 15px;
+    padding: 15px; /* Existing padding */
+    /* Add a subtle border, similar to profile cards on hover, but always visible or on card itself */
+    border: 2px solid #333; /* Darker border for unhovered state */
 }
 
 .content-card:hover {
     transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Slightly stronger shadow */
     background-color: #333;
+    border-color: #fff; /* White border on hover, like profile images */
 }
 
 .content-card .icon {
-    font-size: 2rem; /* Placeholder for icons */
+    font-size: 3rem; /* Slightly larger icon */
     margin-bottom: 10px;
 }
 
 .content-card span {
-    font-size: 1rem;
+    font-size: 1rem; /* Existing */
+    color: #ccc; /* Lighter text color for better contrast on dark card */
+}
+
+.content-card:hover span {
+    color: #fff; /* White text on hover */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .profiles-container h1 {
-        font-size: 5vw;
-    }
-    .profiles-grid {
-        flex-wrap: wrap; /* Allow profile cards to wrap */
-        gap: 3vw;
-    }
-    .profile-card {
-        width: 20vw;
-    }
-    .profile-card span {
-        font-size: 2vw;
+    .profile-content-container h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
     }
     .manage-profiles-btn {
         font-size: 2vw;
         padding: 0.6em 1.2em;
     }
+    .content-grid {
+        gap: 3vw;
+    }
     .content-card {
-        width: 150px;
-        height: 100px;
+        width: 120px; /* Adjust square size for tablets */
+        height: 120px; /* Adjust square size for tablets */
+    }
+    .content-card .icon {
+        font-size: 2.5rem;
     }
 }
 
 @media (max-width: 480px) {
-    .profiles-container h1 {
-        font-size: 7vw;
-        margin-bottom: 15px;
-    }
-    .profiles-grid {
-        gap: 4vw;
-    }
-    .profile-card {
-        width: 30vw; /* Make cards larger percentage-wise */
-    }
-    .profile-card span {
-        font-size: 3vw;
+    .profile-content-container h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
     }
     .manage-profiles-btn {
         font-size: 2.8vw;
         padding: 0.5em 1em;
     }
     .content-grid {
-        flex-direction: column; /* Stack cards vertically on very small screens */
-        align-items: center;
+        gap: 4vw;
+        flex-direction: row; /* Keep as row and let wrap handle it */
+        /* align-items: center; -- This was for column layout, remove if using row wrap */
     }
     .content-card {
-        width: 80%; /* Make content cards take more width */
-        max-width: 250px;
-        height: auto; /* Adjust height automatically */
-        padding: 20px;
+        width: 100px; /* Adjust square size for mobile */
+        height: 100px; /* Adjust square size for mobile */
+         /* To ensure 2 cards per row on small screens if desired, set max-width */
+        /* max-width: calc(50% - 2vw); */ /* Example: 2vw is half of gap */
     }
-    .profile-content-container h2 {
+    .content-card .icon {
         font-size: 2rem;
     }
 } 
