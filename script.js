@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cursorShadow.style.opacity === '0' || cursorShadow.style.opacity === '') {
                 cursorShadow.style.opacity = '1';
             }
-            cursorShadow.style.left = e.clientX + 'px';
-            cursorShadow.style.top = e.clientY + 'px';
+            cursorShadow.style.left = e.clientX - 50 + 'px';
+            cursorShadow.style.top = e.clientY - 50 + 'px';
 
             // Optional: Hide shadow if mouse stops moving for a bit
             clearTimeout(mouseMoveTimeout);
@@ -150,12 +150,4 @@ document.addEventListener('DOMContentLoaded', () => {
             cursorShadow.style.opacity = '1'; // Show shadow when mouse enters the document
         }
     });
-
-    // Cursor shadow effect
-    if (cursorShadow) {
-        document.addEventListener('mousemove', (e) => {
-            // Using pageX and pageY to get coordinates relative to the document
-            cursorShadow.style.transform = `translate(${e.pageX - 15}px, ${e.pageY - 15}px)`;
-        });
-    }
 }); 

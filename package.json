@@ -1,0 +1,22 @@
+{
+  "name": "rezzysite",
+  "version": "1.0.0",
+  "description": "personal site",
+  "main": "script.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rezwansdq/rezzysite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rezwansdq/rezzysite/issues"
+  },
+  "homepage": "https://github.com/rezwansdq/rezzysite#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
