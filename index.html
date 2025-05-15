@@ -3,47 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Rezwan Sadeqi</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body style="background-color: #141414;" class="text-white antialiased">
+    <div id="main-content-wrapper"> <!-- Wrapper for blurring -->
         <header class="absolute top-0 left-0 p-4 md:p-6">
-        <img src="images/logo.png" alt="Logo" class="h-8 md:h-10">
+        <img src="images/logo.png" alt="Logo" class="h-20 md:h-20">
     </header>
 
     <div class="profiles-container flex flex-col items-center justify-center min-h-screen">
-        <h1 class="text-4xl md:text-6xl font-normal mb-5 md:mb-10">Who's watching?</h1>
+        <h1 class="text-4xl md:text-6xl font-normal mb-5 md:mb-10">Who's Rezwan?</h1>
         <div class="profiles-grid flex flex-wrap justify-center gap-4 md:gap-8 mb-10 md:mb-12">
             <div class="profile-card" data-profile="About Me">
                 <img src="images/aboutme.png" alt="About Me" class="rounded-md border-2 border-transparent hover:border-white transition-all duration-150 ease-out transform hover:scale-105">
-                <span class="block mt-2 text-gray-400 group-hover:text-white transition-colors duration-150">About Me</span>
+                <span class="block mt-2 text-custom-gray group-hover:text-white transition-colors duration-150">About Me</span>
             </div>
             <div class="profile-card" data-profile="Projects">
                 <img src="images/projects.png" alt="Projects" class="rounded-md border-2 border-transparent hover:border-white transition-all duration-150 ease-out transform hover:scale-105">
-                <span class="block mt-2 text-gray-400 group-hover:text-white transition-colors duration-150">Projects</span>
+                <span class="block mt-2 text-custom-gray group-hover:text-white transition-colors duration-150">Projects</span>
             </div>
             <div class="profile-card" data-profile="Competitions">
                 <img src="images/competitions.png" alt="Competitions" class="rounded-md border-2 border-transparent hover:border-white transition-all duration-150 ease-out transform hover:scale-105">
-                <span class="block mt-2 text-gray-400 group-hover:text-white transition-colors duration-150">Competitions</span>
+                <span class="block mt-2 text-custom-gray group-hover:text-white transition-colors duration-150">Competitions</span>
             </div>
             <div class="profile-card" data-profile="Passions">
                 <img src="images/passions.png" alt="Passions" class="rounded-md border-2 border-transparent hover:border-white transition-all duration-150 ease-out transform hover:scale-105">
-                <span class="block mt-2 text-gray-400 group-hover:text-white transition-colors duration-150">Passions</span>
-            </div>
-            <!-- Add Profile Card -->
-            <div class="profile-card add-profile-card cursor-pointer text-center w-20 md:w-36 group">
-                <div class="w-full h-20 md:h-36 bg-gray-700 rounded-md flex items-center justify-center border-2 border-transparent group-hover:border-white transition-all duration-150 ease-out transform group-hover:scale-105">
-                    <img src="images/addprofile.png" alt="Add Profile" class="w-1/2 h-1/2 opacity-50 group-hover:opacity-100 transition-opacity duration-150">
-                </div>
-                <span class="block mt-2 text-gray-400 group-hover:text-white transition-colors duration-150">Add Profile</span>
+                <span class="block mt-2 text-custom-gray group-hover:text-white transition-colors duration-150">Passions</span>
             </div>
         </div>
-        <button class="manage-profiles-btn bg-transparent border border-gray-500 text-gray-500 py-2 px-6 md:py-3 md:px-8 text-sm md:text-base uppercase tracking-wider font-bold hover:bg-white hover:text-black transition-colors duration-200">Manage Profiles</button>
+        <button class="manage-profiles-btn bg-transparent border border-gray-500 text-custom-gray py-3 px-8 md:py-2 md:px-10 text-lg md:text-xl tracking-wider font-bold hover:bg-white hover:text-black transition-colors duration-200 mt-8">
+            Manage Profiles
+        </button>
     </div>
 
     <div class="profile-content-container" style="display: none;">
         <!-- This will be populated by JavaScript -->
+    </div>
+    </div> <!-- End of main-content-wrapper -->
+
+    <!-- Modal Structure -->
+    <div id="netflix-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl text-center max-w-md w-full">
+            <h2 class="text-2xl font-semibold mb-4">Oops!</h2>
+            <p class="mb-6 text-gray-300">You're not actually on Netflix, sorry you can't change my website :(</p>
+            <button id="close-modal-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition-colors duration-200">
+                Proceed to exploring
+            </button>
+        </div>
     </div>
 
     <script src="script.js"></script>

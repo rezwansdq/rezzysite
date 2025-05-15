@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const profilesContainer = document.querySelector('.profiles-container');
     const profileContentContainer = document.querySelector('.profile-content-container');
     const cursorShadow = document.getElementById('cursor-shadow'); // Get the shadow element
+    const manageProfilesBtn = document.querySelector('.manage-profiles-btn');
+    const netflixModal = document.getElementById('netflix-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const mainContentWrapper = document.getElementById('main-content-wrapper');
+    const body = document.body;
 
     // Data for Rezwan's profile content
     // Replace placeholder image URLs with actual paths to your 150x150px images
@@ -66,6 +71,53 @@ document.addEventListener('DOMContentLoaded', () => {
     // Directly render Rezwan's content on page load
     renderProfileContent(profileData.rezwan);
 
+    // Function to show the modal
+    function showModal() {
+        if (netflixModal) {
+            netflixModal.classList.remove('hidden');
+            netflixModal.classList.add('flex'); // Use flex to center it as per Tailwind setup
+        }
+        if (mainContentWrapper) {
+            // mainContentWrapper.classList.add('blur-sm'); // Using custom CSS class for more control
+            body.classList.add('modal-active');
+        }
+    }
+
+    // Function to hide the modal
+    function hideModal() {
+        if (netflixModal) {
+            netflixModal.classList.add('hidden');
+            netflixModal.classList.remove('flex');
+        }
+        if (mainContentWrapper) {
+            // mainContentWrapper.classList.remove('blur-sm');
+            body.classList.remove('modal-active');
+        }
+    }
+
+    if (manageProfilesBtn) {
+        manageProfilesBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent any default button action if it were a submit type
+            showModal();
+        });
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            hideModal();
+        });
+    }
+
+    // Close modal if user clicks outside of the modal content (on the overlay)
+    if (netflixModal) {
+        netflixModal.addEventListener('click', (event) => {
+            // Check if the click is on the modal overlay itself, not on its children
+            if (event.target === netflixModal) {
+                hideModal();
+            }
+        });
+    }
+
     // Cursor shadow logic
     let mouseMoveTimeout;
     document.addEventListener('mousemove', (e) => {
@@ -98,4 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
             cursorShadow.style.opacity = '1'; // Show shadow when mouse enters the document
         }
     });
+
+    // Cursor shadow effect
+    if (cursorShadow) {
+        document.addEventListener('mousemove', (e) => {
+            // Using pageX and pageY to get coordinates relative to the document
+            cursorShadow.style.transform = `translate(${e.pageX - 15}px, ${e.pageY - 15}px)`;
+        });
+    }
 }); 
