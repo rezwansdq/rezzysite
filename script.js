@@ -9,6 +9,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContentWrapper = document.getElementById('main-content-wrapper');
     const body = document.body;
 
+    // Add event listeners to initial profile cards
+    profileCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const profileName = card.getAttribute('data-profile');
+            let targetPage = '';
+
+            switch (profileName) {
+                case 'About Me':
+                    targetPage = 'about.html';
+                    break;
+                case 'Projects':
+                    targetPage = 'projects.html';
+                    break;
+                case 'Competitions':
+                    targetPage = 'competitions.html';
+                    break;
+                case 'Passions':
+                    targetPage = 'passions.html';
+                    break;
+                default:
+                    targetPage = 'index.html'; // Fallback or error page
+            }
+            window.location.href = targetPage;
+        });
+    });
+
     // Data for Rezwan's profile content
     // Replace placeholder image URLs with actual paths to your 150x150px images
     const profileData = {
@@ -16,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Rezwan Sadeqi",
             items: [
                 { id: "about", title: "About Me", icon: "👤" },
-                { id: "github", title: "GitHub", icon: "💻" },
                 { id: "competitions", title: "Competitions", icon: "🏆" },
                 { id: "hobbies", title: "Hobbies", icon: "🎮" }
             ]
@@ -51,10 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contentGrid.appendChild(card);
 
             card.addEventListener('click', () => {
-                console.log(`Clicked on ${item.title} for ${profile.name}`);
-                // Add navigation logic here, e.g.:
-                // window.location.href = `#${item.id}`;
-                // Or display content in a modal, etc.
+                window.location.href = 'game_details.html';
             });
         });
 
@@ -68,7 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
         profileContentContainer.appendChild(contentGrid);
     }
 
+
     // Directly render Rezwan's content on page load
+    // This part might need adjustment if the initial page is only for profile selection
+    // For now, keeping it as is, assuming it's for a different section of the page.
     renderProfileContent(profileData.rezwan);
 
     // Function to show the modal
@@ -118,36 +143,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Cursor shadow logic
-    let mouseMoveTimeout;
-    document.addEventListener('mousemove', (e) => {
-        if (cursorShadow) {
-            // Make shadow visible immediately on first move, then rely on opacity transition
-            if (cursorShadow.style.opacity === '0' || cursorShadow.style.opacity === '') {
-                cursorShadow.style.opacity = '1';
-            }
-            cursorShadow.style.left = e.clientX - 50 + 'px';
-            cursorShadow.style.top = e.clientY - 50 + 'px';
-
-            // Optional: Hide shadow if mouse stops moving for a bit
-            clearTimeout(mouseMoveTimeout);
-            mouseMoveTimeout = setTimeout(() => {
-                if (cursorShadow) {
-                    // cursorShadow.style.opacity = '0'; // Uncomment to hide when mouse stops
+    // Cursor shadow logic - only apply on index.html
+    if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+        let mouseMoveTimeout;
+        document.addEventListener('mousemove', (e) => {
+            if (cursorShadow) {
+                // Make shadow visible immediately on first move, then rely on opacity transition
+                if (cursorShadow.style.opacity === '0' || cursorShadow.style.opacity === '') {
+                    cursorShadow.style.opacity = '1';
                 }
-            }, 300); // Adjust timeout as needed
-        }
-    });
+                cursorShadow.style.left = e.clientX - 50 + 'px';
+                cursorShadow.style.top = e.clientY - 50 + 'px';
 
-    document.addEventListener('mouseleave', () => {
-        if (cursorShadow) {
-            cursorShadow.style.opacity = '0'; // Hide shadow when mouse leaves the document
-        }
-    });
+                // Optional: Hide shadow if mouse stops moving for a bit
+                clearTimeout(mouseMoveTimeout);
+                mouseMoveTimeout = setTimeout(() => {
+                    if (cursorShadow) {
+                        // cursorShadow.style.opacity = '0'; // Uncomment to hide when mouse stops
+                    }
+                }, 300); // Adjust timeout as needed
+            }
+        });
 
-    document.addEventListener('mouseenter', () => {
-        if (cursorShadow) {
-            cursorShadow.style.opacity = '1'; // Show shadow when mouse enters the document
-        }
-    });
+        document.addEventListener('mouseleave', () => {
+            if (cursorShadow) {
+                cursorShadow.style.opacity = '0'; // Hide shadow when mouse leaves the document
+            }
+        });
+
+        document.addEventListener('mouseenter', () => {
+            if (cursorShadow) {
+                cursorShadow.style.opacity = '1'; // Show shadow when mouse enters the document
+            }
+        });
+    }
 }); 
