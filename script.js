@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContentWrapper = document.getElementById('main-content-wrapper');
     const body = document.body;
 
+
     // Add event listeners to initial profile cards
     profileCards.forEach(card => {
         card.addEventListener('click', () => {
@@ -34,67 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = targetPage;
         });
     });
-
-    // Data for Rezwan's profile content
-    // Replace placeholder image URLs with actual paths to your 150x150px images
-    const profileData = {
-        rezwan: {
-            name: "Rezwan Sadeqi",
-            items: [
-                { id: "about", title: "About Me", icon: "👤" },
-                { id: "competitions", title: "Competitions", icon: "🏆" },
-                { id: "hobbies", title: "Hobbies", icon: "🎮" }
-            ]
-        },
-    };
-
-    // Function to render Rezwan's profile content with avatar cards
-    function renderProfileContent(profile) {
-        profileContentContainer.innerHTML = ''; // Clear previous content
-
-        const header = document.createElement('h2');
-        header.textContent = profile.name;
-        profileContentContainer.appendChild(header);
-
-        const contentGrid = document.createElement('div');
-        contentGrid.className = 'content-grid';
-
-        profile.items.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'avatar-card'; // Use the new avatar card style
-            card.setAttribute('data-item-id', item.id);
-
-            const img = document.createElement('img');
-            img.src = item.iconSrc || "placeholder-avatar.png"; // Image source for the avatar
-            img.alt = item.title;
-
-            const title = document.createElement('span');
-            title.textContent = item.title;
-
-            card.appendChild(img);
-            card.appendChild(title);
-            contentGrid.appendChild(card);
-
-            card.addEventListener('click', () => {
-                window.location.href = 'game_details.html';
-            });
-        });
-
-        const backButton = document.createElement('button');
-        backButton.textContent = 'Back';
-        backButton.addEventListener('click', () => {
-            renderProfileContent(profileData.rezwan);
-        });
-        contentGrid.appendChild(backButton);
-
-        profileContentContainer.appendChild(contentGrid);
-    }
-
-
-    // Directly render Rezwan's content on page load
-    // This part might need adjustment if the initial page is only for profile selection
-    // For now, keeping it as is, assuming it's for a different section of the page.
-    renderProfileContent(profileData.rezwan);
 
     // Function to show the modal
     function showModal() {

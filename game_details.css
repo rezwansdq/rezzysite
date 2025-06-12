@@ -18,7 +18,7 @@ body {
 .navbar ul li a {
     color: #fff;
     text-decoration: none;
-    font-size: 1.1vw;
+    font-size: 16px; /* Default font size for smaller screens */
     transition: color 0.3s ease;
 }
 
@@ -33,7 +33,7 @@ body {
     width: 100%;
     z-index: 1000; /* Ensure it's above other content */
     background-color: rgba(20, 20, 20, 0.8); /* Semi-transparent background */
-    padding: 15px 4%; /* Adjust padding as needed */
+    padding: 10px 4%; /* Adjust padding for mobile */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -201,5 +201,14 @@ body {
 
     .top-searches-section h2 {
         font-size: 4vw;
+    }
+}
+
+@media (min-width: 769px) {
+    .navbar ul li a {
+        font-size: 1.1vw; /* Use vw for larger screens */
+    }
+    .navbar {
+        padding: 15px 4%; /* Original padding for larger screens */
     }
 }

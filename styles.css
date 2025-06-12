@@ -8,9 +8,8 @@ body {
     /* align-items: center; */
     /* min-height: 100vh; */
     /* text-align: center; */ /* Often handled by specific Tailwind text utilities */
-    overflow-x: hidden; 
+    overflow-x: hidden;
     position: relative; /* Needed for the pseudo-element positioning */
-    cursor: none; /* Hide the default cursor */
 }
 
 body::before {
