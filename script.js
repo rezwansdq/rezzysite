@@ -18,19 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             switch (profileName) {
                 case 'About Me':
-                    targetPage = 'about.html';
+                    targetPage = 'about';
                     break;
                 case 'Projects':
-                    targetPage = 'projects.html';
+                    targetPage = 'projects';
                     break;
                 case 'Competitions':
-                    targetPage = 'competitions.html';
+                    targetPage = 'competitions';
                     break;
                 case 'Passions':
-                    targetPage = 'passions.html';
+                    targetPage = 'passions';
                     break;
                 default:
-                    targetPage = 'index.html'; // Fallback or error page
+                    targetPage = 'index'; // Fallback or error page
             }
             window.location.href = targetPage;
         });
